@@ -1,0 +1,21 @@
+body{
+   background-image: url("https://www.nintenderos.com/wp-content/uploads/2019/12/snorlax.png");   
+   background-size:100% 100%;
+   background-position:center;
+   background-repeat:no-repeat;	
+   background-attachment: fixed;
+} 
+
+.LandingPage{
+   display: flex;
+   flex-direction: column;
+   
+}
+.buttonImage{
+   border-radius: 99rem;
+   background-color: rgb(207, 182, 149);
+   margin-top: 10rem;
+   width: 90px;
+   height: 90px;
+    
+}
