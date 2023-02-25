@@ -1,10 +1,16 @@
 import React from "react";
-import { getPokemon } from "../../Redux/Actions";
+import CardsContainer from "../CardsContainer/CardsContainer" 
+import "./home.css"
+import { Link } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Home = ()=>{
- return(
-    <div>
+    return(
+    <div className="home">
         <h1>Este el home 👧 </h1>
+        <SearchBar/>
+        <Link to={"/create"}> <button>CREAR POKEMON</button></Link>
+        <CardsContainer/>
     </div>
  )
 }

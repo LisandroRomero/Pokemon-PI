@@ -1,22 +1,22 @@
+import React from "react"
 
 
 
 
-
-const cards = (props)=>{
+const Cards = (props)=>{
+    console.log(props);
     return(
         <div>
+        <h3>{props.name.toUpperCase()}</h3>
         <img src={props.image}/>
-        <h3>{props.name}</h3>
-        <ul>{props.types.map(type=>{
-            return(
-                <li>{type}</li>
-            )
-        })}</ul>
+        <div>{
+            props.types.join(" - ").toUpperCase()
+            }
+            </div>
         </div>
     )
 }
 
 
 
-export default cards
+export default Cards

@@ -8,7 +8,15 @@ const dataBasePokemons = async () => {
        include : Type,
     })  
        
-     return pokesOnDB
+     return pokesOnDB.map((pokemon)=>{
+      return{
+         id:pokemon.id,
+         name:pokemon.name,
+         image:pokemon.image,
+         types:pokemon.types.map((type)=>type.name)
+
+      }
+     })
 
     } catch (error) {
      console.log({error : "no pokemons availables on data base"})

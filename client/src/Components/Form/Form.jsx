@@ -2,9 +2,20 @@ import React from 'react';
 
 function Form(props) {
     return (
-        <div>
-            <h1>Form</h1>
-        </div>
+        <form >
+               <div>
+                <label htmlFor=""></label>
+                <input></input>
+               </div>
+               <div>
+                <label htmlFor=""></label>
+                <input></input>
+               </div>
+               <div>
+                <label htmlFor=""></label>
+                <input></input>
+               </div>
+        </form>
     );
 }
 

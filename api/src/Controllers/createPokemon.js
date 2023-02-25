@@ -12,11 +12,11 @@ const newPokemon = async (params) => {
     img: params.img ? params.img : "https://images3.alphacoders.com/677/677583.png",
   });
 
-  const typesDb = await Type.findAll({
-    where: {name: params.types}
-  })
+  // const typesDb = await Type.findAll({
+  //   where: {name: params.types}
+  // })
 
-  createdPokemon.addType(typesDb);
+  createdPokemon.addType(params.types);
 };
 
 module.exports = { newPokemon };

@@ -1,6 +1,6 @@
 
 const initialState = {
-    allPokemon: [],
+    allPokemons: [],
     pokeFilter: [],
     pokeDetail: {},
     pokeTypes: [],
@@ -9,20 +9,120 @@ const initialState = {
 
 
 const rootReducer = (state = initialState , action) => {
-    const allPokemon = state.allPokemon;
-    const pokemon = state.pokeFilter;
+    
     switch(action.type){
         
         case "GET_POKEMON" : 
 
         return {
             ...state,
-            allPokemon: action.payload,
-            pokeFilter: action.payload,
+            allPokemons: action.payload          
         }
-        case "FILTER_BY_TYPE":
+
+        case "GET_POKEMON_DETAIL":
+            return {
+              ...state,
+              pokeDetail: { ...action.payload },
+            };
+            case "GET_POKEMON_BY_NAME":
+                const stateName = (action, allPokemon)=>{
+                    const pokemonByName = allPokemon.filter(
+                        (pokemon) => pokemon.name.toLowerCase().includes(action.payload)
+                      );
+                      return pokemonByName;
+                };
+                return {
+                  ...state,
+                  pokeFilter: stateName,
+                  error: !stateName.length ? true : false,
+                };
+
+             case "ORDER_BY_NAME" : 
+                
+               if(action.payload == "asc"){
+                let poke = state.allPokemons.slice()
+                let ords = poke.sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (b.name > a.name) {
+                        return -1;
+                    }
+                    return 0;
+                })
+            
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si  entro1"}}
+                return {
+                    ...state,
+                    pokemons : ords
+                    
+                }   
+            }
+
+            if(action.payload == "desc"){
+                let poke = state.allPokemons.slice()
+                let ords = poke.sort(function (a, b) {
+                    if (b.name > a.name) {
+                        return 1;
+                    }
+                    if (a.name > b.name) {
+                        return -1;
+                    }
+                    return 0;
+                })
+            
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si entro2"}}
+                return {
+                    ...state,
+                    pokemons : ords
+                    
+                }   
+            }
+
+            case "ORDER_BY_ATTACK" : 
+            if(action.payload == "asc"){
+                let poke = state.allPokemons.slice()
+                let ords = poke.sort(function (a, b) {
+                    if (a.attack > b.attack) {
+                        return 1;
+                    }
+                    if (b.attack > a.attack) {
+                        return -1;
+                    }
+                    return 0;
+                })
+            
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si1 entro"}}
+                return {
+                    ...state,
+                    pokemons : ords
+                    
+                }   
+            }
+
+            if(action.payload == "desc"){
+                let poke = state.allPokemons.slice()
+                let ords = poke.sort(function (a, b) {
+                    if (b.attack > a.attack) {
+                        return 1;
+                    }
+                    if (a.attack > b.attack) {
+                        return -1;
+                    }
+                    return 0;
+                })
+            
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords,  entro : "si2 entro"}}
+                return {
+                    ...state,
+                    pokemons : ords
+                   
+                }   
+            }
             
         default:
             return {...state};
     }
 }
+
+export default rootReducer
