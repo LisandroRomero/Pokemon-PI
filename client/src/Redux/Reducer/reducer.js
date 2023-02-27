@@ -22,9 +22,15 @@ const rootReducer = (state = initialState , action) => {
         case "GET_POKEMON_DETAIL":
             return {
               ...state,
-              pokeDetail: { ...action.payload },
+              pokeDetail:action.payload,
             };
-            case "GET_POKEMON_BY_NAME":
+        case "CLEAR_DETAIL":
+                return {
+                  ...state,
+                  pokeDetail: {},
+                };
+
+        case "GET_POKEMON_BY_NAME":
                 const stateName = (action, allPokemon)=>{
                     const pokemonByName = allPokemon.filter(
                         (pokemon) => pokemon.name.toLowerCase().includes(action.payload)
@@ -37,9 +43,9 @@ const rootReducer = (state = initialState , action) => {
                   error: !stateName.length ? true : false,
                 };
 
-             case "ORDER_BY_NAME" : 
+        case "ORDER_BY_NAME" : 
                 
-               if(action.payload == "asc"){
+               if(action.payload === "asc"){
                 let poke = state.allPokemons.slice()
                 let ords = poke.sort(function (a, b) {
                     if (a.name > b.name) {
@@ -51,7 +57,7 @@ const rootReducer = (state = initialState , action) => {
                     return 0;
                 })
             
-                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si  entro1"}}
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords }}
                 return {
                     ...state,
                     pokemons : ords
@@ -59,7 +65,7 @@ const rootReducer = (state = initialState , action) => {
                 }   
             }
 
-            if(action.payload == "desc"){
+            if(action.payload === "desc"){
                 let poke = state.allPokemons.slice()
                 let ords = poke.sort(function (a, b) {
                     if (b.name > a.name) {
@@ -71,7 +77,7 @@ const rootReducer = (state = initialState , action) => {
                     return 0;
                 })
             
-                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si entro2"}}
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords }}
                 return {
                     ...state,
                     pokemons : ords
@@ -79,8 +85,8 @@ const rootReducer = (state = initialState , action) => {
                 }   
             }
 
-            case "ORDER_BY_ATTACK" : 
-            if(action.payload == "asc"){
+        case "ORDER_BY_ATTACK" : 
+            if(action.payload === "asc"){
                 let poke = state.allPokemons.slice()
                 let ords = poke.sort(function (a, b) {
                     if (a.attack > b.attack) {
@@ -92,7 +98,7 @@ const rootReducer = (state = initialState , action) => {
                     return 0;
                 })
             
-                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords , entro : "si1 entro"}}
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords}}
                 return {
                     ...state,
                     pokemons : ords
@@ -100,7 +106,7 @@ const rootReducer = (state = initialState , action) => {
                 }   
             }
 
-            if(action.payload == "desc"){
+            if(action.payload === "desc"){
                 let poke = state.allPokemons.slice()
                 let ords = poke.sort(function (a, b) {
                     if (b.attack > a.attack) {
@@ -112,14 +118,20 @@ const rootReducer = (state = initialState , action) => {
                     return 0;
                 })
             
-                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords,  entro : "si2 entro"}}
+                if(state.pokeFilter.length > 0 ) { return {...state , pokeFilter : ords}}
                 return {
                     ...state,
                     pokemons : ords
                    
                 }   
-            }
+            };
             
+            case "CLEAR_HOME" : 
+            return {
+                ...state,
+                allPokemons : state.pokePermanent,
+                pokeFilters : []
+            }
         default:
             return {...state};
     }

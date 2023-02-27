@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {useSelector, useDispatch} from "react-redux"
 import Cards from "../Cards/Card"
 import { getPokemon } from '../../Redux/Actions';
+import { Link } from 'react-router-dom';
 
 function CardsContainer() {
    const pokemons = useSelector(state=>state.allPokemons)
@@ -32,13 +33,17 @@ function CardsContainer() {
       <div>
          <div>
              {paginatedCards?.map(pokemon=>{
-                 return <Cards 
+                 return <div>
+                <Link to={`/detail/${pokemon.id}`} style={{textDecoration: "none"}} >
+                 <Cards 
                 name = {pokemon.name}
-                 key = {pokemon.id}
-                 id ={pokemon.id}
-                 image={pokemon.image}
-                 types = {pokemon.types}
-                 />
+                key = {pokemon.id}
+                id ={pokemon.id}
+                image={pokemon.image}
+                types = {pokemon.types}
+                />
+                </Link>
+                </div>
              })}          
          </div>
          <div >

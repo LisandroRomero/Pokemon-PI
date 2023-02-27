@@ -16,17 +16,18 @@ export const getPokemon = () => {
   };
   
   export function  getPokemonDetail (id) {
-    
-    
-      return async function (dispatch) {
-        const pokemonDetail = await axios.get(`http://localhost:3001/pokemons/${id}`)
-        
+     return async function (dispatch) {
+      try {
+        const pokemonDetail = await axios.get(`http://localhost:3001/pokemons/${id}`);
         return dispatch({
           type: "GET_POKEMON_DETAIL",
-          payload: pokemonDetail.data
-        })
+          payload: pokemonDetail.data,
+        });
+      } catch (e) {
+        console.log(e, "Error al traer el detalle del Pokemon del back");
       }
-    }
+    };
+  };
 
  
 
@@ -82,5 +83,14 @@ export const getPokemon = () => {
       payload
     }
   }
-
+  export const clearDetail = () => {
+    return {
+      type: "CLEAR_DETAIL",
+    };
+  };
+  export const clearHome = () => {
+    return {
+      type : "CLEAR_HOME",
+    }
+  }
   
