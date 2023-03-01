@@ -34,14 +34,18 @@ export const getPokemon = () => {
 
     export const getByName = (name) =>{
       
-        return async function (dispatch) {
-          const getDetails = await axios.get(`http://localhost:3001/pokemons?name=${name}`)
+      return async function (dispatch) {
+          try {
+          const getDetails = await axios.get(`http://localhost:3001/pokemons/?name=${name}`)
           return dispatch({
-              type : "GET_BY_NAME",
-          payload : getDetails.data
-        })
-      }
-      
+            type : "GET_BY_NAME",
+            payload : getDetails.data
+          })
+        } catch (error) {
+          console.log({error: "problemas al traer pokemon del back"});
+        }
+        }
+        
     }
     
 
@@ -69,6 +73,12 @@ export const getPokemon = () => {
       }
     };
   };
+  export const filterByCreate =(payload) => {
+      return{
+        type: "FILTER_BY_CREATE",
+        payload
+      }
+  }
 
   export const orderByName = (payload) => {
     return {
@@ -83,6 +93,12 @@ export const getPokemon = () => {
       payload
     }
   }
+  export const filterByType = (payload)=>{
+    return{
+      type:"FILTER_BY_TYPE",
+      payload
+    }
+  }
   export const clearDetail = () => {
     return {
       type: "CLEAR_DETAIL",
@@ -91,6 +107,11 @@ export const getPokemon = () => {
   export const clearHome = () => {
     return {
       type : "CLEAR_HOME",
+    }
+  }
+  export const empty = ()=>{
+    return{
+      type : "EMPTY"
     }
   }
   

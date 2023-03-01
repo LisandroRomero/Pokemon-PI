@@ -1,46 +1,45 @@
-import React from 'react';
-import { useState } from 'react';
-import { useSelector,useDispatch  } from 'react-redux';
-import {allPokemons,clearHome,getByName} from "../../Redux/Actions/index"
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getByName } from "../../Redux/Actions/index"
 
 
-function SearchBar(props) {
+function SearchBar() {
     const dispatch = useDispatch()
 
-    const [input , setInput] = useState("")
-    const pokemons = useSelector((state) => state.allPokemons)
-    
+    const [input, setInput] = useState("")
+    const pokemons = useSelector((state) => state.pokemons)
 
-    let handlerChange = (e) => {
-        setInput(e.target.value);
-    } 
-   
-    let handleSubmit = (e) => {
-        dispatch(clearHome())
-        e.preventDefault();
-        let disAndSet = (input) => { dispatch(getByName(input))
-            setInput('');
-        }
-        let pkFind = pokemons.filter(pk => pk.name === input);
-        pkFind.length > 0 ?  disAndSet(input) : alert("no ")
-        
-        
-      
+
+    let handlerChange = (event) => {
+        setInput(event.target.value);
+    }
+
+    let handleSubmit = (event) => {
+
+        event.preventDefault();
+        dispatch(getByName(input))
+        setInput('');
+
+        // let pkFind = pokemons?.filter(pk => pk.name === input);
+        // pkFind?.length > 0 ?  disAndSet(input) : alert("no ")
+
+
+
     }
 
     return (
         <div>
-         <form onSubmit={handleSubmit}>
-          <input
-          
-          onChange={handlerChange}
-          type="text" 
-          value={ input }
-          placeholder="Search pokemon..."
-          onClick={()=>  setInput('')}
-          /> 
-         <button type="submit"> Search! </button>    
-    </form>
+            <form onSubmit={handleSubmit}>
+                <input
+
+                    onChange={handlerChange}
+                    type="text"
+                    value={input}
+                    placeholder="Search pokemon..."
+                    onClick={() => setInput('')}
+                />
+                <button type="submit"> Search! </button>
+            </form>
         </div>
     );
 }

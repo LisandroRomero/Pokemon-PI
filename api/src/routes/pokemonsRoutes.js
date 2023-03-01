@@ -15,8 +15,9 @@ router.get("/", async(req,res)=>{
          }else{
             res.status(404).send("Not found")
          }
+      }else{
+         res.json(pokemonsList)
       }
-      res.json(pokemonsList)
    } catch (error) {
       res.status(400).json({error:"error al traer los pokemones"})
    }

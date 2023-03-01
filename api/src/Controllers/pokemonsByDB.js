@@ -13,7 +13,14 @@ const dataBasePokemons = async () => {
          id:pokemon.id,
          name:pokemon.name,
          image:pokemon.image,
-         types:pokemon.types.map((type)=>type.name)
+         hp:pokemon.hp,
+         attack: pokemon.attack,
+         defense: pokemon.defense,
+         speed: pokemon.speed, 
+         height: pokemon.height,
+         weight: pokemon.weight,
+         types:pokemon.types.map((type)=>type.name),
+         createdInDb:pokemon.createdInDb
 
       }
      })
