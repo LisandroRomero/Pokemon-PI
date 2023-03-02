@@ -1,18 +1,18 @@
 import React from "react"
-
+import "./cards.css"
 
 
 
 const Cards = (props)=>{
     // console.log(props);
     return(
-        <div>
-        <h3>{props.name.toUpperCase()}</h3>
-        <img src={props.image} alt={props.name}/>
-        <div>{
+        <div className="card">
+        <h3 className="name">{props.name.toUpperCase()}</h3>
+        <img className="img" src={props.image} alt={props.name}/>
+        <h4 className="types" >{
             props.types.join(" - ").toUpperCase()
             }
-            </div>
+            </h4>
         </div>
     )
 }

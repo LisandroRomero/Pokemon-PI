@@ -164,7 +164,7 @@ const rootReducer = (state = initialState, action) => {
 
       if (action.payload === "created") {
         const createdPokes = state.allPokemons?.filter((poke) => typeof poke.id === "string");
-        console.log(createdPokes);
+        // console.log(createdPokes);
         return {
           ...state,
           pokemons: createdPokes,
@@ -194,6 +194,7 @@ const rootReducer = (state = initialState, action) => {
         pokeDetail: {},
         error: false,
       };
+      
     default:
       return { ...state };
   }

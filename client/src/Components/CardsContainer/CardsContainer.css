@@ -1,0 +1,18 @@
+.container{
+    /* border:2px solid black; */
+    display: grid;
+    flex-direction: row;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-left: 3rem;
+    grid-template-columns: repeat(4, 25%);
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.card{
+    border: 5px solid rgb(52, 101, 175);
+    height: fit-content;
+    width: 240px;
+    margin-top: 15px;
+}

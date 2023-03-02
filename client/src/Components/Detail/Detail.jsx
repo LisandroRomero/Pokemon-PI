@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearDetail, getPokemonDetail } from "../../Redux/Actions/index";
 import { useEffect } from "react";
 import Loading from "../Loading/Loading";
-
+import "./Detail.css"
 
 const Detail = (props) => {
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ const Detail = (props) => {
   };
  console.log(pokemon);
   return (
-    <div>
+    <div className="fondo">
       <Link to={"/home"}>
-        <button onClick={(e) => handleClick(e)}>Regresar</button>
+        <button className="button" onClick={(e) => handleClick(e)}>Go home</button>
       </Link>
       {pokemon.length ? (
-        <div >
-          <h1 >Name: {pokemon[0].name.toUpperCase()}</h1>
+        <div className="detail">
           <div >
+          <h1  >Name: {pokemon[0].name.toUpperCase()}</h1>
           <img
             src={pokemon[0].image}
             alt="Image not found"
@@ -38,7 +38,7 @@ const Detail = (props) => {
             }
             </h2>
           </div>
-          <div >
+          <div className="stats" >
           <h3 >ID: {pokemon[0].id}</h3>
           <h2 >Hp: {pokemon[0].hp}</h2>
           <h2 >attack: {pokemon[0].attack}</h2>

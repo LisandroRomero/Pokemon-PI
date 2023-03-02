@@ -28,6 +28,7 @@ function Filter({ setCurrentPage }) {
         dispatch(filterByCreate(event.target.value))
         setCurrentPage(0)
     }
+   
 
 
     return (
