@@ -49,5 +49,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     },
+    // region:{
+    //   type:DataTypes.STRING,
+    //   allowNull:false
+    // }
   });
 };

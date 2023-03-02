@@ -10,6 +10,7 @@ const newPokemon = async (params) => {
     height: params.height,
     weight: params.weight,
     img: params.img ? params.img : "https://images3.alphacoders.com/677/677583.png",
+    // region:params.region,
   });
 
   // const typesDb = await Type.findAll({

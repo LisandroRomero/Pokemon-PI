@@ -11,7 +11,7 @@ const validate = (value, pokemon) => {
       )
         errors.name = "this pokemon already exists";
       if (value.name.length > 20)
-        errors.name = "El nombre no puede ser mayor a 20 caracteres";
+        errors.name = "Cannot be longer than 20 characters";
     }
     if (value.hp) {
       if (
@@ -27,7 +27,7 @@ const validate = (value, pokemon) => {
         value.attack > 190 ||
         !Number.isInteger(parseFloat(value.attack))
       )
-        errors.attack = "El ataque debe ser tener un valor entre 1-190";
+        errors.attack = "Attack must be between 1-190";
     }
     if (value.defense) {
       if (
@@ -35,7 +35,7 @@ const validate = (value, pokemon) => {
         value.defense > 250 ||
         !Number.isInteger(parseFloat(value.defense))
       )
-        errors.defense = "La defensa debe tener un valor entre 1-250";
+        errors.defense = "Defense must be between 1-250";
     }
     if (value.speed) {
       if (
@@ -43,7 +43,7 @@ const validate = (value, pokemon) => {
         value.speed > 200 ||
         !Number.isInteger(parseFloat(value.speed))
       )
-        errors.speed = "La velocidad debe tener un valor entre 1-200";
+        errors.speed = "Speed must be between 1-200";
     }
     if (value.height) {
       if (
@@ -51,15 +51,15 @@ const validate = (value, pokemon) => {
         value.height > 200 ||
         !Number.isInteger(parseFloat(value.height))
       )
-        errors.height = "La altura debe tener un valor entre 1-200";
+        errors.height = "Height must be between 1-200";
     }
     if (value.weight) {
       if (value.weight < 1 || value.weight > 1000)
-        errors.weight = "El peso debe tener un valor entre 1-1000";
+        errors.weight = "Weight must be between 1-1000";
     }
     if (value.types) {
       if (!value.types.length || value.types.length > 2)
-        errors.types = "Se requiere al menos un tipo y maximo dos tipos";
+        errors.types = "You need at least 1 type";
       else {
         errors.types = false;
       }

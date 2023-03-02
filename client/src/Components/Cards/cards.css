@@ -3,8 +3,14 @@
     width: 200;
     height: 200;
     border-radius:15px ;
-    background-color: rgb(205, 180, 8);  
+    background-color: rgba(205, 179, 8, 0.636);  
+    color: rgb(52, 101, 175);
     text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ;
+}
+.card:hover{
+    transform: scale(1.05);
 }
 
 
@@ -19,4 +25,5 @@
 .types{
     margin-bottom: 12px;
     color: black;
+    
 }

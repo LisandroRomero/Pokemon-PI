@@ -1,0 +1,9 @@
+.filterButton{
+    background-color:rgba(255, 205, 5, 0.74) ;
+    border: 2px solid rgb(52, 101, 175);
+    border-radius: 10px;
+    color: rgb(52, 101, 175);
+    height: 2rem;
+    cursor: pointer;
+    margin: 0;
+}

@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { createPokemon, getTypes, empty } from "../../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import validate from "./validate";
+import "./Form.css"
 
 
 const CreatePokemon = () => {
@@ -128,148 +129,161 @@ const CreatePokemon = () => {
 
   console.log(input.types);
   return (
-    <div className="createPokemonContainer">
+    <div className="containerForm">
       <Link to={"/home"}>
-        <button className="buttonBack">Go home</button>
+        <button  className="homeButton">Go home</button>
       </Link>
-      <div className="formContainer">
+      <div className="createPokemonContainer">
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="form" >
-            <div>
-              <label className="formLabel">Name:</label>
-              <input
-                type="text"
-                value={input.name}
-                name="name"
-                placeholder="Name"
-                required
-                onChange={handleChange}
-              />
-            </div>
+            <div className="inputsAndTypes">
+            <div className="inputs" >
 
-            <div>
-              <label className="formLabel">Hp:</label>
-              <input
-                type="number"
-                value={input.hp}
-                name="hp"
-                placeholder="1-255"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Attack:</label>
-              <input
-                type="number"
-                value={input.attack}
-                name="attack"
-                placeholder="1-190"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Defense:</label>
-              <input
-                type="number"
-                value={input.defense}
-                name="defense"
-                placeholder="1-250"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Speed:</label>
-              <input
-                type="number"
-                value={input.speed}
-                name="speed"
-                placeholder="1-200"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Altura(dm):</label>
-              <input
-                type="number"
-                value={input.height}
-                name="height"
-                placeholder="1-200"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Peso(hg):</label>
-              <input
-                type="number"
-                value={input.weight}
-                name="weight"
-                placeholder="1-1000"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <label className="formLabel">Apariencia:</label>
-              <input
-                type="text"
-                value={input.image}
-                name="img"
-                placeholder="URL de la imagen"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <h3 className="typesTittle">Tipos:</h3>
-          <div className="typesCreate">
-            {types?.map((type) => (
-              <div className="typeCreate" key={type.id}>
-                <label >{type.name}</label>
+              <div>
+                <label className="formLabel">Name:</label>
                 <input
-                  type={"checkbox"}
-                  value={type.name}
-                  name={type.name}
-                  onChange={(e) => handleCheck(e)}
+                  autoComplete="off"
+                  type="text"
+                  value={input.name}
+                  name="name"
+                  placeholder="Name"
+                  required
+                  onChange={handleChange}
                 />
               </div>
-            ))}
+
+              <div>
+                <label className="formLabel">Hp:</label>
+                <input
+                  type="number"
+                  value={input.hp}
+                  name="hp"
+                  placeholder="1-255"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Attack:</label>
+                <input
+                  type="number"
+                  value={input.attack}
+                  name="attack"
+                  placeholder="1-190"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Defense:</label>
+                <input
+                  type="number"
+                  value={input.defense}
+                  name="defense"
+                  placeholder="1-250"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Speed:</label>
+                <input
+                  type="number"
+                  value={input.speed}
+                  name="speed"
+                  placeholder="1-200"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Height:</label>
+                <input
+                  type="number"
+                  value={input.height}
+                  name="height"
+                  placeholder="1-200"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Weight:</label>
+                <input
+                  type="number"
+                  value={input.weight}
+                  name="weight"
+                  placeholder="1-1000"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label className="formLabel">Image:</label>
+                <input
+                  type="text"
+                  value={input.image}
+                  name="img"
+                  placeholder="URL de la imagen"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="types" >
+
+              <h3 className="typesTittle">Types:</h3>
+              <div className="typesCreate">
+                {types?.map((type) => (
+                  <div className="typeCreate" key={type.id}>
+                    <label >{type.name}</label>
+                    <input
+                      type={"checkbox"}
+                      value={type.name}
+                      name={type.name}
+                      onChange={(e) => handleCheck(e)}
+                    />
+                  </div>
+                ))}
+              </div>
+            
+
+            </div>
+            </div>
+            <div className="errors">
+                {error.name && <p className="pStyled">{error.name}</p>}
+                {error.hp && <p className="pStyled">{error.hp}</p>}
+                {error.atk && <p className="pStyled">{error.attack}</p>}
+                {error.def && <p className="pStyled">{error.defense}</p>}
+                {error.speed && <p className="pStyled">{error.speed}</p>}
+                {error.height && <p className="pStyled">{error.height}</p>}
+                {error.weight && <p className="pStyled">{error.weight}</p>}
+                {error.types && <p className="pStyled">{error.types}</p>}
+              </div>
+            <div>
+            <button
+              className="homeButton"
+              type="submit"
+              disabled={
+                error.name ||
+                error.hp ||
+                error.attack ||
+                error.defense ||
+                error.speed ||
+                error.height ||
+                error.weight ||
+                error.types
+              }
+            >
+              Create new Pokemon
+            </button>
+            </div>
           </div>
-          <div>
-            {error.name && <p className="pStyled">{error.name}</p>}
-            {error.hp && <p className="pStyled">{error.hp}</p>}
-            {error.atk && <p className="pStyled">{error.attack}</p>}
-            {error.def && <p className="pStyled">{error.defense}</p>}
-            {error.speed && <p className="pStyled">{error.speed}</p>}
-            {error.height && <p className="pStyled">{error.height}</p>}
-            {error.weight && <p className="pStyled">{error.weight}</p>}
-            {error.types && <p className="pStyled">{error.types}</p>}
-          </div>
-          <button
-            className="submitButton"
-            type="submit"
-            disabled={
-              error.name ||
-              error.hp ||
-              error.attack ||
-              error.defense ||
-              error.speed ||
-              error.height ||
-              error.weight ||
-              error.types
-            }
-          >
-            Create new Pokemon
-          </button>
         </form>
       </div>
     </div>

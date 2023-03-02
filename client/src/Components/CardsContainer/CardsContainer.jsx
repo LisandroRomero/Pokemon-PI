@@ -39,14 +39,18 @@ function CardsContainer() {
   return (
     <div>
       <div>
-        <SearchBar />
-        <Filter setCurrentPage={setCurrentPage} />
-
-        <div className='container'>
+        {/* <div className='navBarContainer' ></div> */}
+        <div className='navBar' >
+        <Link to={"/create"}> <button className='createPokemon' >CREATE NEW POKEMON</button></Link>
+        <Filter setCurrentPage={setCurrentPage} className= "filter" />
+        <SearchBar setCurrentPage={setCurrentPage} />
+        </div>
+         
           {paginatedCards.length ?
-
-            paginatedCards.map(pokemon => {
-              return <div >
+        <div className='container'>
+           
+           { paginatedCards.map(pokemon => {
+              return <div className='pokemonsCards' >
                 <Link to={`/detail/${pokemon.id}`} className="link" >
                   <Cards className = "card"
                     name={pokemon.name}
@@ -57,15 +61,18 @@ function CardsContainer() {
                   />
                 </Link>
               </div>
-            }) : <Loading />}
-        </div>
+            })} </div>
+            
+            : <div className='loadingContainer'> <Loading className="loading" /> </div>}
+            
       </div>
-      <div >
-        <button disabled={currentPage === 0} onClick={handlePrevClick}>
-          Prev
-        </button>
+      <div className='handlePageContainer' >
+        <button disabled={currentPage === 0} onClick={handlePrevClick} className="handlePageButton">
+         {"<"}
+        </button >
         {Array.from({ length: pageCount }).map((_, index) => (
           <button
+            className="handlePageButton"
             key={index}
             disabled={currentPage === index}
             onClick={() => setCurrentPage(index)}
@@ -73,8 +80,8 @@ function CardsContainer() {
             {index + 1}
           </button>
         ))}
-        <button disabled={currentPage === pageCount - 1} onClick={handleNextClick}>
-          Next
+        <button disabled={currentPage === pageCount - 1} onClick={handleNextClick} className="handlePageButton">
+          {">"}
         </button>
 
       </div>

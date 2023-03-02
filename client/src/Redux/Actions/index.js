@@ -42,7 +42,7 @@ export const getPokemon = () => {
             payload : getDetails.data
           })
         } catch (error) {
-          console.log({error: "problemas al traer pokemon del back"});
+          alert("Pokemon doesnt exist");
         }
         }
         

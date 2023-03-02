@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getByName } from "../../Redux/Actions/index"
+import "./SearchBar.css"
 
 
-function SearchBar() {
+function SearchBar({setCurrentPage}) {
     const dispatch = useDispatch()
 
     const [input, setInput] = useState("")
@@ -19,6 +20,7 @@ function SearchBar() {
         event.preventDefault();
         dispatch(getByName(input))
         setInput('');
+        setCurrentPage(0)
 
         // let pkFind = pokemons?.filter(pk => pk.name === input);
         // pkFind?.length > 0 ?  disAndSet(input) : alert("no ")
@@ -28,17 +30,17 @@ function SearchBar() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className ="searchForm">
+            <form onSubmit={handleSubmit} >
                 <input
-
+                    className='input'
                     onChange={handlerChange}
                     type="text"
                     value={input}
                     placeholder="Search pokemon..."
                     onClick={() => setInput('')}
                 />
-                <button type="submit"> Search! </button>
+                <button type="submit" className='searchButton'  > Search! </button>
             </form>
         </div>
     );

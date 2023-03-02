@@ -1,0 +1,69 @@
+.createPokemonContainer form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 500px ;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100% ;
+    height: fit-content;
+    background-color: rgba(205, 179, 8, 0.636);
+    border: 10px solid rgb(52, 101, 175);
+    border-radius: 15px;
+    padding: 10px;
+}
+.inputsAndTypes{
+    display: flex;
+    gap: 1rem;
+}
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 80px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.inputs div{
+    display: flex;
+    flex-direction: column;
+}
+.typesCreate{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.types{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.errors{
+    color: red;
+}
+.homeButton{
+    margin-top: 15px;
+    background-color: rgb(205, 179, 8);
+    cursor: pointer;
+    color: rgb(52, 101, 175);
+    border-radius: 8px;
+    border: 2px solid rgb(52, 101, 175);
+    height: 30px;
+
+}
+.homeButton:disabled{
+    background-color: gray;
+    color: rgb(74, 73, 73);
+    border-color: rgb(61, 61, 61);
+    opacity: .5;
+}
